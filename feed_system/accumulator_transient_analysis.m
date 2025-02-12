@@ -1,6 +1,8 @@
 clc; clear; close all;
 
-deltaT = 0.1;%s 100ms
+% deltaT = 0.1;%s 100ms
+deltaT = 5;%s 100ms
+
 rho_eth = 789; %;kg/m^3
 mdot_fuel = 0.5161;%kg/s
 
@@ -60,3 +62,25 @@ fprintf('Initial N2 gas volume in accumulator: %.2f[L]\n',Vgas_L);
 fprintf('Pressure drop after ΔT=%.2f[s]: ΔP=%.3f [bar]\n',deltaT,delta_P_bar);
 
 
+%Case 3
+%26.5Lのタンクに10Lのエタノールを満たした場合
+%燃料の残りスペースは16.5L 
+% n=0.5kgの場合
+%注：大型ボンベ(47L, 7000litre)には8.2kgの窒素が入っている
+Vgas_L = 16.5;
+Vgas = Vgas_L / 1000;
+
+m_N2 = Pacc * Vgas * M_N2 / R / T / 1000;%kg
+
+%Vliquid = Vacc - Vgas; %;
+%Vliquid_L = Vliquid * 1000;
+
+Vgas_prime = Vgas + mdot_fuel / rho_eth * deltaT;
+Pacc_prime = n_N2 * R * T / Vgas_prime;
+delta_P = Pacc_prime - Pacc;%Pa
+delta_P_bar = delta_P / 101325;%bar
+fprintf('***************\n');
+fprintf('Case3: Initial mass of N2 gas in the accumulator m=%.2f[kg]\n',m_N2);
+fprintf('(Load 10L of Ethanol in 26.5L tank. Charge N2 gas in the remaining 16.5L space.)\n');
+fprintf('Initial N2 gas volume in accumulator: %.2f[L]\n',Vgas_L);
+fprintf('Pressure drop after ΔT=%.2f[s]: ΔP=%.3f [bar]\n',deltaT,delta_P_bar);
