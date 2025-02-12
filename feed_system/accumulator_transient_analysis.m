@@ -34,9 +34,10 @@ Vgas_prime = Vgas + mdot_fuel / rho_eth * deltaT;
 Pacc_prime = n_N2 * R * T / Vgas_prime;
 delta_P = Pacc_prime - Pacc;%Pa
 delta_P_bar = delta_P / 101325;%bar
-fprintf('***************8\n');
-fprintf('n=1[mol](m=%.2f[kg])の場合\n',m_N2);
-fprintf('deltaT=%.2f 秒後の圧力変化: ΔP=%.3f [bar]\n',deltaT,delta_P_bar);
+fprintf('***************\n');
+fprintf('Case1: Initial mass of N2 gas in the accumulator m=%.2f[kg]\n',m_N2);
+fprintf('Initial N2 gas volume in accumulator: %.2f[L]\n',Vgas_L);
+fprintf('Pressure drop after ΔT=%.2f[s]: ΔP=%.3f [bar]\n',deltaT,delta_P_bar);
 
 %n=0.5kgの場合
 %注：大型ボンベ(47L, 7000litre)には8.2kgの窒素が入っている
@@ -53,10 +54,9 @@ Vgas_prime = Vgas + mdot_fuel / rho_eth * deltaT;
 Pacc_prime = n_N2 * R * T / Vgas_prime;
 delta_P = Pacc_prime - Pacc;%Pa
 delta_P_bar = delta_P / 101325;%bar
-fprintf('***************8\n');
-fprintf('m=%.2f[kg]の場合\n',m_N2);
-fprintf('deltaT=%.2f 秒後の圧力変化: ΔP=%.3f [bar]\n',deltaT,delta_P_bar);
-
-
+fprintf('***************\n');
+fprintf('Case2: Initial mass of N2 gas in the accumulator m=%.2f[kg]\n',m_N2);
+fprintf('Initial N2 gas volume in accumulator: %.2f[L]\n',Vgas_L);
+fprintf('Pressure drop after ΔT=%.2f[s]: ΔP=%.3f [bar]\n',deltaT,delta_P_bar);
 
 
